@@ -67,7 +67,7 @@ class Ruta {
             }
         }
     }
-    public function getController($metodo,$controlador,$params=null){
+    public function getController($metodo,$controlador,$params=[]){
         $metodoController = ""; // metodo
         // comprobamos si es index o no el metodo o funcion del controlador
         if($metodo == "index" || $metodo == "" || is_null($metodo)){

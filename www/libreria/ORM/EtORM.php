@@ -19,7 +19,7 @@ class EtORM extends \Conexion{
     public static function getDesconectar(){
         self::$cnx = null;
     }
-    public function Ejecutar($procedimiento,$params=null){
+    public function Ejecutar($procedimiento,$params=[]){
         $query = "call ".$procedimiento;
         self::getConexion();
         if(!is_null($params)){
