@@ -8,10 +8,7 @@ RUN cp /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
 
 #RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 
-COPY /python/requirements.txt requirements.txt
-
-
 COPY /www /var/www/html
 
 #RUN chmod -R a+rwX /var/www/html/LINEATIEMPO/libreria/MPDF/vendor/mpdf/mpdf/tmp
-RUN chmod -R a+rwX /var/www/html/
+#RUN chmod -R a+rwX /var/www/html/
