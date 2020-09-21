@@ -25,5 +25,5 @@ $ruta->controladores(array(
     "/traslado" => "TrasladoController",
     "/pendiente" => "PendienteController",
     "/consulta" => "ConsultaController",
-    "/movimiento" => "movimientoController",
+    "/movimiento" => "MovimientoController",
 ));
