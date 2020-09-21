@@ -93,7 +93,7 @@ class AuthController
     public function salir()
     {
         session_destroy();
-        return redirecciona()->to("/");
+        return redirecciona()->to("");
     }
     //Cambio de password desde el perfil de usuario para el acceso a la APP.
     public function cambiarPassword()
