@@ -1,0 +1,28 @@
+# Definimos los stages que se van a ir corriendo
+stages:
+    - linter
+    - empaquetado
+   
+run-linter-test:
+    stage: linter
+    # Select image from https://hub.docker.com/_/php
+    image: php:7.4
+    before_script:
+        # Install dependencies
+        - bash ci/linter_install.sh > /dev/null
+    script:
+        - vendor/bin/parallel-lint ./www/
+
+
+# Generamos la Registry
+# Identificar el número de versión puede ser TAG
+build:
+    stage: empaquetado
+    image: docker:stable
+    services:
+        - docker:dind
+    before_script:
+        - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    script:
+        - docker build --pull -t "$CI_REGISTRY_IMAGE":"0.0.2" . #:TAG
+        - docker push "$CI_REGISTRY_IMAGE":"0.0.2" #:TAG
