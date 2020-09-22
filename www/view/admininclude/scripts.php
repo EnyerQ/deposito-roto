@@ -40,6 +40,7 @@
 
 <script src="<?php asset('js/dataTable.js')?>"></script>
 
+
 <script>
     function confirma(url,dato) {
         $.confirm({
@@ -70,3 +71,9 @@
         });
     }
 </script>
+
+
+
+<!--Aquí comienza las dependencias VUE-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
