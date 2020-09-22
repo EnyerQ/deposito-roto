@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: php-server
+    container_name: srevr-app-deposito
     restart: always
     ports:
       - 80:80
