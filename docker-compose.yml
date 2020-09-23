@@ -5,7 +5,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: srevr-app-deposito
+    container_name: server-app-deposito
     restart: always
     ports:
       - 80:80
