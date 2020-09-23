@@ -1,19 +1,21 @@
-var url = "vue/listar";
-    var app = new Vue({
-        el: '#app',
-        data: {
-            usuarios: [],
+var app = new Vue({
+    el: '#app',
+    data: {
+        datos: [],
+        primerNombre: 'Charlie',
+        segundoNombre: 'Matias'
+    },
+    methods: {
+        listar: function (api) {
+            axios.get(api).then(response => {
+                this.datos = response.data;
+                console.log(this.primerNombre)
+                console.log(this.segundoNombre)
+            });
         },
-        methods: {
-            listarUsuarios: function(){
-                axios.get(url).then(response =>{
-                    this.usuarios = response.data;
-                    console.log(this.usuarios);
-                });
-            },
-        },
-        created: function() {
-            this.listarUsuarios();
+
+        mostrar: function (usuario, email) {
+            alert(`${usuario} el mail es: ${email}`)
         }
-        //Esto es un cambio
-    });
+    },
+});
