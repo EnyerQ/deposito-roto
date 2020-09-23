@@ -17,12 +17,15 @@ class VueController {
     # Definimos el método para revivir las peticiones de axios
     public function listar()
     {
-        #Aqui tenemos el código para dar soporte a las peticiones.
+        #Aqui tenemos el código para dar soporte a las peticiones de axios, cuando este tiene parametros.
         $_POST = json_decode(file_get_contents("php://input"), true);
 
+        # Creamos el objeto para la consulta a la base de datos.
         $obj = new libreria\ORM\EtORM();
+        # Ejecutamos procedimiento almacenado en la base de datos.
         $usuarios = $obj->ejecutar('sp_listar_usuatios');
 
+        #Devolvemos en formato json los resultados.
         echo json_encode($usuarios);
     }
 

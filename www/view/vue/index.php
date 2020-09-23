@@ -38,7 +38,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(usuario,indice) of usuarios">
+                                <tr v-for="usuario of usuarios">
                                     <td>{{usuario.nombre}}</td>
                                     <td>{{usuario.usuariod}}</td>
                                     <td>{{usuario.email}}</td>
@@ -58,26 +58,7 @@
 
     <?php include(VISTA_RUTA."admininclude/scripts.php") ?>
 
-    <script>
-    var url = "vue/listar";
-    var app = new Vue({
-        el: '#app',
-        data: {
-            usuarios: [],
-        },
-        methods: {
-            listarUsuarios: function(){
-                axios.post(url).then(response =>{
-                    this.usuarios = response.data;
-                    console.log(this.usuarios);
-                });
-            },
-        },
-        created: function() {
-            this.listarUsuarios();
-        }
-    });
-    </script>
+    <script src="assets/vue/index.js"></script>
 
 </body>
 
