@@ -33,20 +33,20 @@
 
                             <div class="form-group">
                                 <label for="fechaInicio">Seleccionar fecha de inicio:</label>
-                                <input type="date" name="fechaInicio" id="fechInicio" class="form-control">
+                                <input type="date" name="fechaInicio" v-model="inicio" id="fechInicio" class="form-control">
                             </div>
 
 
                             <div class="form-group">
                                 <label for="fechaInicio">Seleccionar fecha de final:</label>
-                                <input type="date" name="fechaFinal" id="fechFinal" class="form-control">
+                                <input type="date" name="fechaFinal" v-model="final" id="fechFinal" class="form-control">
                             </div>
 
                             <div class="form-group">
                                 <label for="selectDeposito">Seleccionar depósito:</label>
                                 <select name="selectDeposito" id="selectDeposito" class="form-control">
                                     <option value=""></option>
-                                    <option v-for="deposito of datos.depositos" v-bind:value="deposito.id"> {{deposito.nombre}}
+                                    <option v-for="deposito of datos.depositos" v-model="deposito" v-bind:value="deposito.id"> {{deposito.nombre}}
                                     </option>
                                 </select>
                             </div>
@@ -59,14 +59,14 @@
                                 <label for="selectCategoria">Seleccionar categoría de producto:</label>
                                 <select name="selectCategoria" id="selectCategoria" class="form-control">
                                     <option value=""></option>
-                                    <option v-for="categoria of datos.categorias" v-bind:value="categoria.id"> {{categoria.nombre}}
+                                    <option v-for="categoria of datos.categorias" v-model="categoria" v-bind:value="categoria.id"> {{categoria.nombre}}
                                     </option>
                                 </select>
                             </div>
 
                             <div class="form-group">
                                 <label for="selectEstadoAlmacen">Seleccionar estado de almacenamiento:</label>
-                                <select name="selectEstadoAlmacen" id="selectEstadoAlmacen" class="form-control">
+                                <select name="selectEstadoAlmacen" id="selectEstadoAlmacen"  v-model="estado"class="form-control">
                                     <option value=""></option>
                                     <option v-for="estado of datos.estados" v-bind:value="estado.id"> {{estado.nombre}}
                                     </option>
@@ -75,7 +75,7 @@
 
                             <div class="form-group">
                                 <label for="selectProgresoMovimineto">Estado o progreso de los movimientos:</label>
-                                <select name="selectProgresoMovimineto" id="selectProgresoMovimineto" class="form-control">
+                                <select name="selectProgresoMovimineto" v-model="progreso" id="selectProgresoMovimineto" class="form-control">
                                     <option value="1">Pendiente</option>
                                     <option value="2">Completo</option>
                                     </option>

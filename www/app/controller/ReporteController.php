@@ -65,22 +65,28 @@ class ReporteController
             #Aqui tenemos el código para dar soporte a las peticiones de axios, cuando este tiene parametros.
             $variable_post = json_decode(file_get_contents("php://input"), true);
 
-            var_dump($variable_post['fecha_inicio']);
+            
+            $inicio = (isset($variable_post['fecha_inicio'])) ? $variable_post['fecha_inicio'] : '';
+            $fin = (isset($variable_post['fecha_fin'])) ? $variable_post['fecha_fin'] : '';
+            $deposito = (isset($variable_post['id_deposito'])) ? $variable_post['id_deposito'] : '';
+            $categoria = (isset($variable_post['id_categoria'])) ? $variable_post['id_categoria'] : '';
+            $progreso = (isset($variable_post['id_progreso'])) ? $variable_post['id_progreso'] : '';
+            $estado = (isset($variable_post['id_estado'])) ? $variable_post['id_estado'] : '';
+            /*
+            print_r($variable_post);
             die();
-
-            $inicio = (isset($variable_post['fecha_inicio'])) ? $_POST['fecha_inicio'] : '';
-
+            */
             # Creamos el objeto para la consulta a la base de datos.
             $obj = new libreria\ORM\EtORM();
             # Ejecutamos procedimiento almacenado en la base de datos.
             $movimientos = $obj->ejecutar('sp_reporte_movimiento_2',array(
-                '2020-01-01',
-                '2020-02-01',
+                $inicio,
+                $fin,
+                $deposito,
                 '',
-                '',
-                '',
-                '',
-                '',
+                $categoria,
+                $progreso,
+                $estado,
             ));
 
             $data = $movimientos;
