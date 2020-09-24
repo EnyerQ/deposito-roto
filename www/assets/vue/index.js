@@ -2,15 +2,13 @@ var app = new Vue({
     el: '#app',
     data: {
         datos: [],
-        primerNombre: 'Charlie',
-        segundoNombre: 'Matias'
     },
     methods: {
+        // Listar nos permite recuperar listados de diferentes entidades en la base
+        // Invocando procedimientos almacenados.
         listar: function (api) {
             axios.get(api).then(response => {
                 this.datos = response.data;
-                console.log(this.primerNombre)
-                console.log(this.segundoNombre)
             });
         },
 
@@ -18,4 +16,7 @@ var app = new Vue({
             alert(`${usuario} el mail es: ${email}`)
         }
     },
+    created: function (){
+        this.listar('/vue/listar');
+    }
 });

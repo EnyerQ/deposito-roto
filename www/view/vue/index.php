@@ -29,8 +29,8 @@
                 <div class="panel-body">
 
                     <div id="app">
-
                         <button @click="listar('/vue/listar')">Submit</button>
+
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -63,6 +63,8 @@
     <?php include(VISTA_RUTA."admininclude/scripts.php") ?>
 
     <script src="/assets/vue/index.js"></script>
+
+    
 
 </body>
 

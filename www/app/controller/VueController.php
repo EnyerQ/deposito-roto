@@ -25,7 +25,7 @@ class VueController
         # Creamos el objeto para la consulta a la base de datos.
         $obj = new libreria\ORM\EtORM();
         # Ejecutamos procedimiento almacenado en la base de datos.
-        $usuarios = $obj->ejecutar('sp_listar_usuatios');
+        $usuarios = $obj->ejecutar('sp_listar_usuarios');
 
         #Devolvemos en formato json los resultados.
         echo json_encode($usuarios);

@@ -3,16 +3,16 @@
 
 <head>
 
-    <?php include(VISTA_RUTA."admininclude/head.php") ?>
+    <?php include VISTA_RUTA . "admininclude/head.php"?>
 
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php include(VISTA_RUTA."admininclude/menu.php") ?>
+        <?php include VISTA_RUTA . "admininclude/menu.php"?>
+
 
         <div id="page-wrapper">
             <div class="row">
@@ -27,38 +27,83 @@
             <!-- /.row -->
             <div class="panel panel-default">
                 <div class="panel-body">
-
                     <div id="app">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Usuario</th>
-                                    <th>Nombre</th>
-                                    <th>Correo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-for="usuario of usuarios">
-                                    <td>{{usuario.nombre}}</td>
-                                    <td>{{usuario.usuariod}}</td>
-                                    <td>{{usuario.email}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="fechaInicio">Seleccionar fecha de inicio:</label>
+                                <input type="date" name="fechaInicio" id="fechInicio" class="form-control">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="fechaInicio">Seleccionar fecha de final:</label>
+                                <input type="date" name="fechaFinal" id="fechFinal" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectDeposito">Seleccionar depósito:</label>
+                                <select name="selectDeposito" id="selectDeposito" class="form-control">
+                                    <option value=""></option>
+                                    <option v-for="deposito of datos.depositos" v-bind:value="deposito.id"> {{deposito.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="selectCategoria">Seleccionar categoría de producto:</label>
+                                <select name="selectCategoria" id="selectCategoria" class="form-control">
+                                    <option value=""></option>
+                                    <option v-for="categoria of datos.categorias" v-bind:value="categoria.id"> {{categoria.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectEstadoAlmacen">Seleccionar estado de almacenamiento:</label>
+                                <select name="selectEstadoAlmacen" id="selectEstadoAlmacen" class="form-control">
+                                    <option value=""></option>
+                                    <option v-for="estado of datos.estados" v-bind:value="estado.id"> {{estado.nombre}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="selectProgresoMovimineto">Estado o progreso de los movimientos:</label>
+                                <select name="selectProgresoMovimineto" id="selectProgresoMovimineto" class="form-control">
+                                    <option value="1">Pendiente</option>
+                                    <option value="2">Completo</option>
+                                    </option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12"><button @click="crearConsulta()" class="btn btn-info pull-right">Buscar</button></div>
                     </div>
                 </div>
             </div>
-            <!--TERMINO CONTENIDO-->
-
         </div>
-        <!-- /#page-wrapper -->
+        <!--TERMINO CONTENIDO-->
+
+    </div>
+    <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
 
-    <?php include(VISTA_RUTA."admininclude/scripts.php") ?>
 
-    <script src="/assets/vue/index.js"></script>
+
+    <?php include VISTA_RUTA . "admininclude/scripts.php"?>
+
+    <script src="/assets/vue/reporteMovimiento.js"></script>
 
 </body>
 
