@@ -17,7 +17,7 @@ class ConsultaController
             return redirecciona()->to("/");
         }
     }
-    public function movimiento(){//Respuesta de la consulta de los movimientos por producto
+    public function cambio(){//Respuesta de la consulta de los movimientos por producto
         if($_SESSION["inicio"] == true) {
                 $consulta = new libreria\ORM\EtORM();
                 if (input('deposito') != '' && input('categoria') != '' && input('estado') != '') {

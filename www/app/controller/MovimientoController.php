@@ -92,6 +92,7 @@ class MovimientoController
             $estadoEquipo = input('estadoEquipoMovimiento');
             $estadoMovimiento = input('progresoMovimiento');
             $comentario = input('comentarioMovimiento');
+            $fechaPedido = input('fechaPedido');
 
             //Recuperamos el detalle del tipo de movimiento.
             $tipoMovimiento = TipoMovimiento::find($tipo);
@@ -114,6 +115,7 @@ class MovimientoController
             $movimiento->id_sub_estado = $estadoEquipo;
             $movimiento->id_deposito = $deposito;
             $movimiento->id_usuario = $_SESSION['id'];
+            $movimiento->fecha_pedido = $fechaPedido;
 
             //Verificamos que podemos guardar el nuevo registro.
             if ($movimiento->guardar()) {

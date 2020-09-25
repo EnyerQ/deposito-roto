@@ -29,7 +29,7 @@
                 <legend>Busqueda por productos</legend>
             </div>
             <div class="panel-body">
-                <form action="<?php url("consulta/movimiento") ?>" method="post" role="form">
+                <form action="<?php url("consulta/cambio") ?>" method="post" role="form">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="fecha_inicio">Fecha inicio</label>

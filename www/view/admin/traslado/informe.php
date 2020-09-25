@@ -44,6 +44,23 @@
                                                 data-target="#cambiarRemito">Editar</button>
                                         </td>
                                     </tr>
+
+                                    <tr>
+                                        <td>
+                                            <b>Fecha pedido:</b>
+                                        </td>
+                                        <td>
+                                            <?php echo $traslado->fecha_pedido ?>
+                                        </td>
+                                        <td>
+                                            <?php if (false) {?>
+                                            <button class="btn btn-primary btn-sm pull-right" data-toggle="modal"
+                                                data-target="#cambiarFecha">Editar</button>
+                                            <?php }?>
+                                        </td>
+                                    </tr>
+
+                                    
                                     <tr>
                                         <td>
                                             <b>Fecha:</b>
@@ -58,6 +75,23 @@
                                             <?php }?>
                                         </td>
                                     </tr>
+
+                                    
+                                    <tr>
+                                        <td>
+                                            <b>Fecha ultima modificación:</b>
+                                        </td>
+                                        <td>
+                                            <?php echo $traslado->fecha_modificacion ?>
+                                        </td>
+                                        <td>
+                                            <?php if (false) {?>
+                                            <button class="btn btn-primary btn-sm pull-right" data-toggle="modal"
+                                                data-target="#cambiarFecha">Editar</button>
+                                            <?php }?>
+                                        </td>
+                                    </tr>
+
                                     <tr>
                                         <td>
                                             <b>Origen:</b>

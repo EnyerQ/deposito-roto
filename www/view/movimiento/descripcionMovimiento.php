@@ -61,6 +61,16 @@ foreach ($progresos as $progreso) {?>
     </div>
 </div>
 
+<div class="col-md-4"></div>
+<div class="col-md-4">
+    <div class="form-group">
+        <label for="fechaPedido">Ingresar la fecha de pedido o solicitud</label>
+        <input type="date" id="fechaPedido" name="fechaPedido" class="form-control" value="<?= date('Y-m-d')?>">
+    </div>
+</div>
+<div class="col-md-4"></div>
+
+
 <?php if ($tipo == 6 || $tipo == 7) {?>
 
 <div class="col-md-6">

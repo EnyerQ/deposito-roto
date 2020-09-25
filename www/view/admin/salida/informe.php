@@ -46,6 +46,22 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <b>Fecha pedido:</b>
+                                        </td>
+                                        <td>
+                                            <?php echo $salida->fecha_pedido ?>
+                                        </td>
+                                        <td>
+                                            <?php if (false) { ?>
+                                            <button class="btn btn-primary btn-sm pull-right" data-toggle="modal"
+                                                data-target="#cambiarFecha">Editar</button>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+
+                                    
+                                    <tr>
+                                        <td>
                                             <b>Fecha:</b>
                                         </td>
                                         <td>
@@ -58,6 +74,24 @@
                                             <?php } ?>
                                         </td>
                                     </tr>
+
+                                    
+                                    <tr>
+                                        <td>
+                                            <b>Fecha ultima acción:</b>
+                                        </td>
+                                        <td>
+                                            <?php echo $salida->fecha_modificacion ?>
+                                        </td>
+                                        <td>
+                                            <?php if (false) { ?>
+                                            <button class="btn btn-primary btn-sm pull-right" data-toggle="modal"
+                                                data-target="#cambiarFecha">Editar</button>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+
+
                                     <tr>
                                         <td>
                                             <b>Origen:</b>
