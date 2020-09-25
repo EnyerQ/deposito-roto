@@ -28,73 +28,108 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div id="app">
-                    <div class="row">
-                        <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
 
-                            <div class="form-group">
-                                <label for="fechaInicio">Seleccionar fecha de inicio:</label>
-                                <input type="date" name="fechaInicio" v-model="inicio" id="fechInicio" class="form-control">
+                                <div class="form-group">
+                                    <label for="fechaInicio">Seleccionar fecha de inicio:</label>
+                                    <input type="date" name="fechaInicio" v-model="inicio" id="fechInicio"
+                                        class="form-control">
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="fechaInicio">Seleccionar fecha de final:</label>
+                                    <input type="date" name="fechaFinal" v-model="final" id="fechFinal"
+                                        class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectDeposito">Seleccionar depósito:</label>
+                                    <select name="selectDeposito" id="selectDeposito" class="form-control">
+                                        <option value=""></option>
+                                        <option v-for="deposito of datos.depositos" v-model="deposito"
+                                            v-bind:value="deposito.id"> {{deposito.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+
                             </div>
 
+                            <div class="col-md-6">
 
-                            <div class="form-group">
-                                <label for="fechaInicio">Seleccionar fecha de final:</label>
-                                <input type="date" name="fechaFinal" v-model="final" id="fechFinal" class="form-control">
+                                <div class="form-group">
+                                    <label for="selectCategoria">Seleccionar categoría de producto:</label>
+                                    <select name="selectCategoria" id="selectCategoria" class="form-control">
+                                        <option value=""></option>
+                                        <option v-for="categoria of datos.categorias" v-model="categoria"
+                                            v-bind:value="categoria.id"> {{categoria.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectEstadoAlmacen">Seleccionar estado de almacenamiento:</label>
+                                    <select name="selectEstadoAlmacen" id="selectEstadoAlmacen" v-model="estado"
+                                        class="form-control">
+                                        <option value=""></option>
+                                        <option v-for="estado of datos.estados" v-bind:value="estado.id">
+                                            {{estado.nombre}}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="selectProgresoMovimineto">Estado o progreso de los movimientos:</label>
+                                    <select name="selectProgresoMovimineto" v-model="progreso"
+                                        id="selectProgresoMovimineto" class="form-control">
+                                        <option value="1">Pendiente</option>
+                                        <option value="2">Completo</option>
+                                        </option>
+                                    </select>
+                                </div>
+
                             </div>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="selectDeposito">Seleccionar depósito:</label>
-                                <select name="selectDeposito" id="selectDeposito" class="form-control">
-                                    <option value=""></option>
-                                    <option v-for="deposito of datos.depositos" v-model="deposito" v-bind:value="deposito.id"> {{deposito.nombre}}
-                                    </option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-12"><button @click="crearConsulta()"
+                                    class="btn btn-info pull-right">Buscar</button>
+
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>pedido</th>
+                                            <th>fecha</th>
+                                            <th>final</th>
+                                            <th>codigo</th>
+                                            <th>categoria</th>
+                                            <th>producto</th>
+                                            <th>cantidad</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="registro of registros">
+                                            <td>{{registro.fecha_pedido}}</td>
+                                            <td>{{registro.fecha}}</td>
+                                            <td>{{registro.fecha_modificacion}}</td>
+                                            <td>{{registro.codigo}}</td>
+                                            <td>{{registro.categoria}}</td>
+                                            <td>{{registro.modelo}}</td>
+                                            <td>{{registro.cantidad}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
 
                         </div>
-
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="selectCategoria">Seleccionar categoría de producto:</label>
-                                <select name="selectCategoria" id="selectCategoria" class="form-control">
-                                    <option value=""></option>
-                                    <option v-for="categoria of datos.categorias" v-model="categoria" v-bind:value="categoria.id"> {{categoria.nombre}}
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="selectEstadoAlmacen">Seleccionar estado de almacenamiento:</label>
-                                <select name="selectEstadoAlmacen" id="selectEstadoAlmacen"  v-model="estado"class="form-control">
-                                    <option value=""></option>
-                                    <option v-for="estado of datos.estados" v-bind:value="estado.id"> {{estado.nombre}}
-                                    </option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="selectProgresoMovimineto">Estado o progreso de los movimientos:</label>
-                                <select name="selectProgresoMovimineto" v-model="progreso" id="selectProgresoMovimineto" class="form-control">
-                                    <option value="1">Pendiente</option>
-                                    <option value="2">Completo</option>
-                                    </option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12"><button @click="crearConsulta()" class="btn btn-info pull-right">Buscar</button></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!--TERMINO CONTENIDO-->
+            <!--TERMINO CONTENIDO-->
 
-    </div>
-    <!-- /#page-wrapper -->
+        </div>
+        <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
