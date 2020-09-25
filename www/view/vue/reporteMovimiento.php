@@ -96,7 +96,7 @@
                             <div class="col-md-12"><button @click="crearConsulta()"
                                     class="btn btn-info pull-right">Buscar</button>
 
-                                <table class="table table-bordered">
+                                <table class="table table-bordered" id="tabla_filtro">
                                     <thead>
                                         <tr>
                                             <th>pedido</th>
