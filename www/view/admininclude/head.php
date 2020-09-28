@@ -6,7 +6,7 @@
 
 <title><?php if(isset($tituloPagina)){echo $tituloPagina;} ?> - <?php echo $_SESSION['razon_social'] ?> </title>
 
-<link rel="icon" type="image/png" href="<?php asset('Imagenes/LogoCTL3.png') ?>"/>
+<link rel="icon" type="image/png" href="<?php asset('Imagenes/LogoCTL3.png') ?>" />
 
 <link href="<?php asset('bower_components/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
 <!-- Estilos del menu-->
@@ -23,3 +23,8 @@
 
 <link href="<?php asset('bower_components/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="<?php asset('css/stilos.css') ?>">
+
+
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">

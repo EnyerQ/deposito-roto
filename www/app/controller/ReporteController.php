@@ -99,4 +99,10 @@ class ReporteController
         }
     }
 
+
+    public function testVue()
+    {
+        return Vista::crear('vue.testVue');
+    }
+
 }

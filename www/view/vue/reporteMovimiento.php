@@ -95,34 +95,41 @@
                         <div class="row">
                             <div class="col-md-12"><button @click="crearConsulta()"
                                     class="btn btn-info pull-right">Buscar</button>
+                                <br>
+                                <br>
 
-                                <table class="table table-bordered" id="tabla_filtro">
-                                    <thead>
-                                        <tr>
-                                            <th>pedido</th>
-                                            <th>fecha</th>
-                                            <th>final</th>
-                                            <th>codigo</th>
-                                            <th>categoria</th>
-                                            <th>producto</th>
-                                            <th>cantidad</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="registro of registros">
-                                            <td>{{registro.fecha_pedido}}</td>
-                                            <td>{{registro.fecha}}</td>
-                                            <td>{{registro.fecha_modificacion}}</td>
-                                            <td>{{registro.codigo}}</td>
-                                            <td>{{registro.categoria}}</td>
-                                            <td>{{registro.modelo}}</td>
-                                            <td>{{registro.cantidad}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="row">
+
+                                    <div class="col-md-12">
+
+                                        <v-app>
+                                            <v-main>
+                                            <v-text-field v-model="search" type="text" label="Filtrar"></v-text-field>
+                                                
+                                                    <v-data-table 
+                                                    :headers="columnas" 
+                                                    :items="registros"
+                                                    class="elevation-2"
+                                                    :search="search">
+
+                                                    <template v-slot:no-data>
+                                                        <v-alert :value="true">
+                                                            Lo sentimos, No se encontraron registros.
+                                                        </v-alert>
+                                                    </template>
+
+                                                </v-data-table>
+
+                                            </v-main>
+                                        </v-app>
+
+                                    </div>
+                                </div>
+
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
