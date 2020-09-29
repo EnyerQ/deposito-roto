@@ -13,6 +13,7 @@ if (m < 10) {
 
 var fecha = y + "-" + m + "-" + d;
 
+Vue.use(VueBlobJsonCsv.default);
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
