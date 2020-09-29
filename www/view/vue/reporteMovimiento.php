@@ -100,11 +100,15 @@
 
                                 <div class="row">
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 small">
 
                                         <v-app>
                                             <v-main>
-                                            <v-text-field v-model="search" type="text" label="Filtrar"></v-text-field>
+                                            <v-card-title>
+                                            Filtrar:
+        <v-spacer></v-spacer>
+                                            <v-text-field v-model="search" type="text" label="Criterios de filtro"></v-text-field>
+                                            </v-card-title>
                                                 
                                                     <v-data-table 
                                                     :headers="columnas" 

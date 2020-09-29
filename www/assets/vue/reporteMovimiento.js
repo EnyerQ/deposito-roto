@@ -1,3 +1,18 @@
+var hoy = new Date(),
+    d = hoy.getDate(),
+    m = hoy.getMonth() + 1,
+    y = hoy.getFullYear(),
+    fecha;
+
+if (d < 10) {
+    d = "0" + d;
+};
+if (m < 10) {
+    m = "0" + m;
+};
+
+var fecha = y + "-" + m + "-" + d;
+
 var app = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -5,8 +20,8 @@ var app = new Vue({
         search: '',
         datos: [],
         registros: [],
-        inicio: '',
-        final: '',
+        inicio: fecha,
+        final: fecha,
         deposito: '',
         categoria: '',
         estado: '',
@@ -21,28 +36,30 @@ var app = new Vue({
             { text: 'FINAL', value: 'fecha_modificacion', class: 'orange darken-4 white--text' },
             { text: 'ORIGEN', value: 'origen', class: 'orange darken-4 white--text' },
             { text: 'DESTINO', value: 'destino', class: 'orange darken-4 white--text' },
-            { text: 'CATEGORIA', value: 'categoria',
-            filter: this.nameFilter, class: 'orange darken-4 white--text' },
+            {
+                text: 'CATEGORIA', value: 'categoria',
+                filter: this.nameFilter, class: 'orange darken-4 white--text'
+            },
             { text: 'MODELO', value: 'modelo', class: 'orange darken-4 white--text' },
             { text: 'CANTIDAD', value: 'cantidad', class: 'orange darken-4 white--text' },
         ],
-        
+
     },
     methods: {
-          /**
-       * Filter for dessert names column.
-       * @param value Value to be tested.
-       * @returns {boolean}
-       */
-      nameFilter(value) {
-        // If this filter has no value we just skip the entire filter.
-        if (!this.search) {
-        return true;
-        }
-        // Check if the current loop value (The dessert name)
-        // partially contains the searched word.
-        return value.toLowerCase().includes(this.search.toLowerCase());
-    },
+        /**
+     * Filter for dessert names column.
+     * @param value Value to be tested.
+     * @returns {boolean}
+     */
+        nameFilter(value) {
+            // If this filter has no value we just skip the entire filter.
+            if (!this.search) {
+                return true;
+            }
+            // Check if the current loop value (The dessert name)
+            // partially contains the searched word.
+            return value.toLowerCase().includes(this.search.toLowerCase());
+        },
         listar: function (api) {
             axios.get(api).then(response => {
                 this.datos = response.data
@@ -74,7 +91,6 @@ var app = new Vue({
 
     },
 
-    
     created: function () {
         this.listar('/reporte/selectores');
         this.crearConsulta();

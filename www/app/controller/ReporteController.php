@@ -20,8 +20,14 @@ class ReporteController
     {
         # Aqui verificamos que tengamos una sessión comenzada.
         if ($_SESSION["inicio"] == true) {
+            $inicio = new DateTime(date('Y-m-d'));
+            $inicio->modify('+1 month');
+            $final = date('Y-m-d');
             # Retornamos la vista solicitada.
-            return Vista::crear('vue.reporteMovimiento');
+            return Vista::crear('vue.reporteMovimiento', array(
+                "inicio"=>$inicio,
+                "final"=>$final
+            ));
         } else {
             # Volvemos al login
             return redirecciona()->to("/");
@@ -41,12 +47,12 @@ class ReporteController
             # Ejecutamos procedimiento almacenado en la base de datos.
             $depositos = $obj->ejecutar('sp_lista_deposito');
             $categorias = $obj->ejecutar('sp_lista_categoria', array(1));
-            $estados = $obj->ejecutar('sp_lista_estado',array(1));
+            $estados = $obj->ejecutar('sp_lista_estado', array(1));
 
             $data = array(
-                "depositos"=>$depositos,
-                "categorias"=>$categorias,
-                "estados"=>$estados,
+                "depositos" => $depositos,
+                "categorias" => $categorias,
+                "estados" => $estados,
             );
 
             #Devolvemos en formato json los resultados.
@@ -65,7 +71,6 @@ class ReporteController
             #Aqui tenemos el código para dar soporte a las peticiones de axios, cuando este tiene parametros.
             $variable_post = json_decode(file_get_contents("php://input"), true);
 
-            
             $inicio = (isset($variable_post['fecha_inicio'])) ? $variable_post['fecha_inicio'] : '';
             $fin = (isset($variable_post['fecha_fin'])) ? $variable_post['fecha_fin'] : '';
             $deposito = (isset($variable_post['id_deposito'])) ? $variable_post['id_deposito'] : '';
@@ -75,11 +80,11 @@ class ReporteController
             /*
             print_r($variable_post);
             die();
-            */
+             */
             # Creamos el objeto para la consulta a la base de datos.
             $obj = new libreria\ORM\EtORM();
             # Ejecutamos procedimiento almacenado en la base de datos.
-            $movimientos = $obj->ejecutar('sp_reporte_movimiento_2',array(
+            $movimientos = $obj->ejecutar('sp_reporte_movimiento_2', array(
                 $inicio,
                 $fin,
                 $deposito,
@@ -98,7 +103,6 @@ class ReporteController
             return redirecciona()->to("/");
         }
     }
-
 
     public function testVue()
     {
