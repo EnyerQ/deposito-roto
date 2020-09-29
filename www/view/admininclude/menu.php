@@ -200,7 +200,7 @@ $est = new libreria\ORM\EtORM();
                     <a href="#"><i class="fa fa-table fa-fw"></i> Reportes<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="<?php url("consulta")?>">Movimiento Productos</a>
+                            <a href="<?php url("reporte/cambio")?>">Movimiento Productos</a>
                         </li>
                         <li>
                             <a href="<?php url("consulta/index_evo")?>">Estadistica Productos</a>

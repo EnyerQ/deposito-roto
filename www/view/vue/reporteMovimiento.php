@@ -46,9 +46,9 @@
 
                                 <div class="form-group">
                                     <label for="selectDeposito">Seleccionar depósito:</label>
-                                    <select name="selectDeposito" id="selectDeposito" class="form-control">
+                                    <select name="selectDeposito" id="selectDeposito" class="form-control" v-model="deposito">
                                         <option value=""></option>
-                                        <option v-for="deposito of datos.depositos" v-model="deposito"
+                                        <option v-for="deposito of datos.depositos"
                                             v-bind:value="deposito.id"> {{deposito.nombre}}
                                         </option>
                                     </select>
@@ -60,9 +60,9 @@
 
                                 <div class="form-group">
                                     <label for="selectCategoria">Seleccionar categoría de producto:</label>
-                                    <select name="selectCategoria" id="selectCategoria" class="form-control">
+                                    <select name="selectCategoria" id="selectCategoria" class="form-control"  v-model="categoria">
                                         <option value=""></option>
-                                        <option v-for="categoria of datos.categorias" v-model="categoria"
+                                        <option v-for="categoria of datos.categorias"
                                             v-bind:value="categoria.id"> {{categoria.nombre}}
                                         </option>
                                     </select>
@@ -101,31 +101,23 @@
                                 <div class="row">
 
                                     <div class="col-md-12 small">
-                                    <template>
-                                        <vue-blob-json-csv
-                                        file-type="csv"
-                                        file-name="sample"
-                                        :data="registros"
-                                        >
-                                        <v-btn
-                                        elevation="2"
-                                    >Download CSV</v-btn>
-                                        </vue-blob-json-csv>
-                                    </template>
-                                    
+                                        <template>
+                                            <vue-blob-json-csv file-type="csv" file-name="sample" :data="registros">
+                                                <v-btn elevation="2">Download CSV</v-btn>
+                                            </vue-blob-json-csv>
+                                        </template>
+
 
                                         <v-app>
                                             <v-main>
-                                            <v-card-title>
-                                            Filtrar:
-        <v-spacer></v-spacer>
-                                            <v-text-field v-model="search" type="text" label="Criterios de filtro"></v-text-field>
-                                            </v-card-title>
-                                                
-                                                    <v-data-table 
-                                                    :headers="columnas" 
-                                                    :items="registros"
-                                                    class="elevation-2"
+                                                <v-card-title>
+                                                    Filtrar:
+                                                    <v-spacer></v-spacer>
+                                                    <v-text-field v-model="search" type="text"
+                                                        label="Criterios de filtro"></v-text-field>
+                                                </v-card-title>
+
+                                                <v-data-table :headers="columnas" :items="registros" class="elevation-2"
                                                     :search="search">
 
                                                     <template v-slot:no-data>
