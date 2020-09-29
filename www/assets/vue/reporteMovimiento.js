@@ -28,6 +28,7 @@ var app = new Vue({
         estado: '',
         progreso: '',
         buscador: '',
+        exportar: ['fecha', 'categoria'],
 
         columnas: [
             { text: 'TIPO MOV', value: 'tipo_movimiento', class: 'orange darken-4 white--text' },
@@ -43,6 +44,7 @@ var app = new Vue({
             },
             { text: 'MODELO', value: 'modelo', class: 'orange darken-4 white--text' },
             { text: 'CANTIDAD', value: 'cantidad', class: 'orange darken-4 white--text' },
+            { text: 'ACCION', value: 'id_movimiento', class: 'orange darken-4 white--text' },
         ],
 
     },
@@ -89,6 +91,10 @@ var app = new Vue({
             })
 
         },
+        //Definimos el metodo de onButtonClick
+        onButtonClick: function (registro) {
+            window.open('/' + registro.tipo_movimiento + '/informe/' + registro.id_movimiento, '_blank');
+        }
 
     },
 

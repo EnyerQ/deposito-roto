@@ -46,10 +46,11 @@
 
                                 <div class="form-group">
                                     <label for="selectDeposito">Seleccionar depósito:</label>
-                                    <select name="selectDeposito" id="selectDeposito" class="form-control" v-model="deposito">
+                                    <select name="selectDeposito" id="selectDeposito" class="form-control"
+                                        v-model="deposito">
                                         <option value=""></option>
-                                        <option v-for="deposito of datos.depositos"
-                                            v-bind:value="deposito.id"> {{deposito.nombre}}
+                                        <option v-for="deposito of datos.depositos" v-bind:value="deposito.id">
+                                            {{deposito.nombre}}
                                         </option>
                                     </select>
                                 </div>
@@ -60,10 +61,11 @@
 
                                 <div class="form-group">
                                     <label for="selectCategoria">Seleccionar categoría de producto:</label>
-                                    <select name="selectCategoria" id="selectCategoria" class="form-control"  v-model="categoria">
+                                    <select name="selectCategoria" id="selectCategoria" class="form-control"
+                                        v-model="categoria">
                                         <option value=""></option>
-                                        <option v-for="categoria of datos.categorias"
-                                            v-bind:value="categoria.id"> {{categoria.nombre}}
+                                        <option v-for="categoria of datos.categorias" v-bind:value="categoria.id">
+                                            {{categoria.nombre}}
                                         </option>
                                     </select>
                                 </div>
@@ -102,11 +104,12 @@
 
                                     <div class="col-md-12 small">
                                         <template>
-                                            <vue-blob-json-csv file-type="csv" file-name="sample" :data="registros">
+                                            <vue-blob-json-csv file-type="csv" file-name="sample" :data="registros"
+                                            fields="exportar">
                                                 <v-btn elevation="2">Download CSV</v-btn>
                                             </vue-blob-json-csv>
                                         </template>
-
+            
 
                                         <v-app>
                                             <v-main>
@@ -119,6 +122,27 @@
 
                                                 <v-data-table :headers="columnas" :items="registros" class="elevation-2"
                                                     :search="search">
+
+                                                    <template v-slot:item="row">
+                                                        <tr>
+                                                            <td>{{row.item.tipo_movimiento}}</td>
+                                                            <td>{{row.item.ticket}}</td>
+                                                            <td>{{row.item.fecha_pedido}}</td>
+                                                            <td>{{row.item.fecha}}</td>
+                                                            <td>{{row.item.fecha_modificacion}}</td>
+                                                            <td>{{row.item.origen}}</td>
+                                                            <td>{{row.item.destino}}</td>
+                                                            <td>{{row.item.categoria}}</td>
+                                                            <td>{{row.item.modelo}}</td>
+                                                            <td>{{row.item.cantidad}}</td>
+                                                            <td>
+                                                                <v-btn class="mx-2" fab dark small color="blue"
+                                                                    @click="onButtonClick(row.item)">
+                                                                    <v-icon dark>mdi-file-search-outline</v-icon>
+                                                                </v-btn>
+                                                            </td>
+                                                        </tr>
+                                                    </template>
 
                                                     <template v-slot:no-data>
                                                         <v-alert :value="true">

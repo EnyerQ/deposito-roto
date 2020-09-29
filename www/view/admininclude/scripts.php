@@ -42,42 +42,44 @@
 
 
 <script>
-    function confirma(url,dato) {
-        $.confirm({
-            title: 'Eliminar',
-            content: '¿Esta seguro que desea eliminar '+ dato +'?',
-            confirmButtonClass: 'btn-danger',
-            cancelButtonClass: 'btn-primary',
-            confirmButton: 'Eliminar',
-            cancelButton: 'Cancelar',
-            confirm: function(){
-                window.location.href=url;
-            }
-        });
-    }
+function confirma(url, dato) {
+    $.confirm({
+        title: 'Eliminar',
+        content: '¿Esta seguro que desea eliminar ' + dato + '?',
+        confirmButtonClass: 'btn-danger',
+        cancelButtonClass: 'btn-primary',
+        confirmButton: 'Eliminar',
+        cancelButton: 'Cancelar',
+        confirm: function() {
+            window.location.href = url;
+        }
+    });
+}
 </script>
 
 <script>
-    function alerta(producto, disponible) {
-        $.alert({
-            title: '¡Atención!',
-            content: '¡No se cuenta con <strong>STOCK</strong> para dicho pedido!<br>'
-            + 'Del producto <strong>' + producto + '</strong> solo dispone de: <strong>' + disponible + '</strong>',
-            icon: 'fa fa-warning',
-            animation: 'zoom',
-            closeAnimation: 'zoom',
-            confirmButtonClass: 'btn-primary',
-            confirmButton: 'Entendido'
-        });
-    }
+function alerta(producto, disponible) {
+    $.alert({
+        title: '¡Atención!',
+        content: '¡No se cuenta con <strong>STOCK</strong> para dicho pedido!<br>' +
+            'Del producto <strong>' + producto + '</strong> solo dispone de: <strong>' + disponible +
+            '</strong>',
+        icon: 'fa fa-warning',
+        animation: 'zoom',
+        closeAnimation: 'zoom',
+        confirmButtonClass: 'btn-primary',
+        confirmButton: 'Entendido'
+    });
+}
 </script>
 
 
 
 <!--Aquí comienza las dependencias VUE-->
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-blob-json-csv@latest/dist/VueBlobJsonCsv.umd.min.js"></script>
