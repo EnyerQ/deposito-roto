@@ -6,7 +6,7 @@
  * Time: 5:45 PM
  */
 // host
-define("HOST", "35.226.60.101");
+define("HOST", "35.247.251.139");
 // base de datos
 define("DB", "bd_test_deposito");
 //usuario
