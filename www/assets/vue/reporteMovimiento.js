@@ -28,23 +28,23 @@ var app = new Vue({
         estado: '',
         progreso: '',
         buscador: '',
-        exportar: ['fecha', 'categoria'],
+        exportar: ['tipo_movimiento', 'ticket', 'fecha_pedido', 'fecha', 'fecha_modificacion', 'origen', 'destino', 'modelo', 'cantidad' ],
 
         columnas: [
-            { text: 'TIPO MOV', value: 'tipo_movimiento', class: 'orange darken-4 white--text' },
-            { text: 'TICKET', value: 'ticket', class: 'orange darken-4 white--text' },
-            { text: 'PEDIDO', value: 'fecha_pedido', class: 'orange darken-4 white--text' },
-            { text: 'FECHA', value: 'fecha', class: 'orange darken-4 white--text' },
-            { text: 'FINAL', value: 'fecha_modificacion', class: 'orange darken-4 white--text' },
-            { text: 'ORIGEN', value: 'origen', class: 'orange darken-4 white--text' },
-            { text: 'DESTINO', value: 'destino', class: 'orange darken-4 white--text' },
+            { text: 'TIPO MOV', value: 'tipo_movimiento', class: 'blue darken-4 white--text' },
+            { text: 'TICKET', value: 'ticket', class: 'blue darken-4 white--text' },
+            { text: 'PEDIDO', value: 'fecha_pedido', class: 'blue darken-4 white--text' },
+            { text: 'FECHA', value: 'fecha', class: 'blue darken-4 white--text' },
+            { text: 'FINAL', value: 'fecha_modificacion', class: 'blue darken-4 white--text' },
+            { text: 'ORIGEN', value: 'origen', class: 'blue darken-4 white--text' },
+            { text: 'DESTINO', value: 'destino', class: 'blue darken-4 white--text' },
             {
                 text: 'CATEGORIA', value: 'categoria',
-                filter: this.nameFilter, class: 'orange darken-4 white--text'
+                filter: this.nameFilter, class: 'blue darken-4 white--text'
             },
-            { text: 'MODELO', value: 'modelo', class: 'orange darken-4 white--text' },
-            { text: 'CANTIDAD', value: 'cantidad', class: 'orange darken-4 white--text' },
-            { text: 'ACCION', value: 'id_movimiento', class: 'orange darken-4 white--text' },
+            { text: 'MODELO', value: 'modelo', class: 'blue darken-4 white--text' },
+            { text: 'CANTIDAD', value: 'cantidad', class: 'blue darken-4 white--text' },
+            { text: 'ACCION', value: 'id_movimiento', class: 'blue darken-4 white--text' },
         ],
 
     },

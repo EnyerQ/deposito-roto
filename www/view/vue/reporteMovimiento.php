@@ -105,8 +105,8 @@
                                     <div class="col-md-12 small">
                                         <template>
                                             <vue-blob-json-csv file-type="csv" file-name="sample" :data="registros"
-                                            fields="exportar">
-                                                <v-btn elevation="2">Download CSV</v-btn>
+                                            :fields="exportar">
+                                                <v-btn elevation="2">exportar datos</v-btn>
                                             </vue-blob-json-csv>
                                         </template>
             
