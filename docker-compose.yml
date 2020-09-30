@@ -1,4 +1,3 @@
- 
 version: "3"
 services:
   php:
@@ -11,5 +10,19 @@ services:
       - 80:80
     volumes:
       - ./www:/var/www/html
+    links: 
+      - mysql:mysql
+
+  mysql:
+    image: mysql:8.0.13
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment: 
+        MYSQL_ROOT_PASSWORD: H40m4ruK
+    volumes: 
+        - ./db:/var/lib/mysql
+    ports: 
+        - "3306:3306"
 volumes:
   www: {}
+  db: {}

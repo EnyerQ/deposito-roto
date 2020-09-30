@@ -6,11 +6,11 @@
  * Time: 5:45 PM
  */
 // host
-define("HOST", "35.247.251.139");
+define("HOST", "mysql");
 // base de datos
 define("DB", "bd_test_deposito");
 //usuario
-define("USER", "ctl-admin");
+define("USER", "root");
 //password
-define("PASSWORD", "ctldev2020");
+define("PASSWORD", "H40m4ruK");
 //----------------------------------
