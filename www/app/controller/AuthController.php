@@ -4,9 +4,9 @@
  * Created by Charly.
  */
 
-use \vista\Vista;
 use App\model\User;
 use libreria\ORM\EtORM;
+use \vista\Vista;
 
 class AuthController
 {
@@ -16,9 +16,9 @@ class AuthController
     }
 
     /*public function error(){
-        if(Session::has("estado")){
-            echo Session::get("estado");
-        }
+    if(Session::has("estado")){
+    echo Session::get("estado");
+    }
     }*/
 
     public function ingresar()
@@ -55,7 +55,6 @@ class AuthController
                     $_SESSION['nombre_deposito'] = $name_depo[0]["nombre"];
                 }
 
-
                 //Validamos si el usuario tiene permisos para este cliente.
                 $client = new EtORM();
                 $validar_cliente = $client->Ejecutar("sp_verificar_permiso_cliente", array($data[0]["id"], $cliente));
@@ -72,17 +71,17 @@ class AuthController
                             $_SESSION[$pri["nombre"]] = false;
                         }
                     }
-                    redirecciona()->to("admin");
+                    redirecciona()->to("stock/calcular/1");
                 } else {
                     redirecciona()->to("login")->withMessage(array(
                         "estado" => "false",
-                        "mensaje" => "No cuenta con permisos para este cliente "
+                        "mensaje" => "No cuenta con permisos para este cliente ",
                     ));
                 }
             } else {
                 redirecciona()->to("login")->withMessage(array(
                     "estado" => "false",
-                    "mensaje" => "Usuario o pasword incorrecto"
+                    "mensaje" => "Usuario o pasword incorrecto",
                 ));
             }
         } else {
@@ -93,7 +92,7 @@ class AuthController
     public function salir()
     {
         session_destroy();
-        return redirecciona()->to("");
+        return redirecciona()->to("/");
     }
     //Cambio de password desde el perfil de usuario para el acceso a la APP.
     public function cambiarPassword()
@@ -112,14 +111,14 @@ class AuthController
                     "estado" => "false",
                     "alert" => "success",
                     "tipo" => "¡CORRECTO!",
-                    "mensaje" => "¡La contraseña se cambió correctamente!"
+                    "mensaje" => "¡La contraseña se cambió correctamente!",
                 ));
             } else {
                 redirecciona()->to("/usuario/perfil")->withMessage(array(
                     "estado" => "false",
                     "alert" => "info",
                     "tipo" => "¡ADVERTENCIA!",
-                    "mensaje" => "¡La nueva contraseña no es igual en ambas casillas!"
+                    "mensaje" => "¡La nueva contraseña no es igual en ambas casillas!",
                 ));
             }
         } else {
@@ -127,7 +126,7 @@ class AuthController
                 "estado" => "false",
                 "alert" => "danger",
                 "tipo" => "¡ERROR!",
-                "mensaje" => "¡La contraseña actual no es la correcta!"
+                "mensaje" => "¡La contraseña actual no es la correcta!",
             ));
         }
     }
@@ -149,14 +148,14 @@ class AuthController
                     "estado" => "false",
                     "alert" => "success",
                     "tipo" => "¡CORRECTO!",
-                    "mensaje" => "¡El nombre de usuario se cambió correctamente!"
+                    "mensaje" => "¡El nombre de usuario se cambió correctamente!",
                 ));
             } else {
                 redirecciona()->to("/usuario/perfil")->withMessage(array(
                     "estado" => "false",
                     "alert" => "info",
                     "tipo" => "¡ADVERTENCIA!",
-                    "mensaje" => "¡No coincide el nuevo nombre de usuario en ambas casillas!"
+                    "mensaje" => "¡No coincide el nuevo nombre de usuario en ambas casillas!",
                 ));
             }
         } else {
@@ -164,7 +163,7 @@ class AuthController
                 "estado" => "false",
                 "alert" => "danger",
                 "tipo" => "¡ERROR!",
-                "mensaje" => "¡La contraseña no es la correcta!"
+                "mensaje" => "¡La contraseña no es la correcta!",
             ));
         }
     }

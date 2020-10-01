@@ -9,7 +9,7 @@ use \vista\Vista;
 class WelcomeController {
 
     public function index(){
-        return Vista::crear("auth/login");
+        return \vista\Vista::crear("auth/login");
     }
 
 }

@@ -1,19 +1,19 @@
 var app = angular.module('seleccion', [])
 
-app.controller('ControladorTab', ['$scope','$http','$filter',function($scope, $http, $filter){
+app.controller('ControladorTab', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
     $scope.eleccion = 'asignado';
     $scope.noDisponibles = [];
-    $scope.Cambiotab = function(nombreTab){
+    $scope.Cambiotab = function (nombreTab) {
 
         $scope.eleccion = nombreTab;
-        if($scope.eleccion == 'nodisponible'){
+        if ($scope.eleccion == 'nodisponible') {
             $scope.recuperarNoDisponibles();
 
             console.log($scope.noDisponibles);
         }
     }
 
-    $scope.recuperarNoDisponibles = function(){
+    $scope.recuperarNoDisponibles = function () {
         $http.get($scope.url + "stock/nodisponible").then(function ($request) {
             $scope.noDisponibles = $request.data;
         });
@@ -21,26 +21,40 @@ app.controller('ControladorTab', ['$scope','$http','$filter',function($scope, $h
 
 }])
 
-app.controller('DetalleControlador',function($scope){
+app.controller('DetalleControlador', function ($scope) {
     $scope.detalle = 'deta0';
-    $scope.verDetalle = function(idMovimiento){
+    $scope.verDetalle = function (idMovimiento) {
 
-        if($scope.detalle == idMovimiento){
+        if ($scope.detalle == idMovimiento) {
             $scope.detalle = 'deta0';
-        }else{
+        } else {
             $scope.detalle = idMovimiento;
         }
     }
 });
 
-app.controller('ModeloControlador',['$scope','$http','$filter',function($scope, $http, $filter){
+app.controller('ModeloControlador', ['$scope', '$http', '$filter', function ($scope, $http, $filter) {
 
     $scope.modelos = [];
     $scope.url = $("#urlPrincipal").val();
 
 
-    $scope.cargarDetalle = function (estado,categoria) {
-        $http.get($scope.url + "stock/modelos/" + estado + "/" + categoria ).then(function ($request) {
+    $scope.cargarDetalle = function (estado, categoria) {
+        $http.get($scope.url + "stock/modelos/" + estado + "/" + categoria).then(function ($request) {
+            $scope.modelos = $request.data;
+        });
+    };
+
+    //Definimos el metodo para recuperar el detalle de equipos seriables.
+    $scope.cargarDetalleSeriable = function (idAlmacen, idCategoria) {
+        $http.get($scope.url + "stock/detalleSeriable/" + idAlmacen + "/" + idCategoria).then(function ($request) {
+            $scope.modelos = $request.data;
+        });
+    };
+
+    //Definimos el metodo para recuperar el detalle de equipos no seriables.
+    $scope.cargarDetalleNoSeriable = function (idAlmacen, idCategoria) {
+        $http.get($scope.url + "stock/detalleNoSeriable/" + idAlmacen + "/" + idCategoria).then(function ($request) {
             $scope.modelos = $request.data;
         });
     };
