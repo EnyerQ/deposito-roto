@@ -6,7 +6,7 @@
  * Time: 5:45 PM
  */
 // host
-define("HOST", "mysql");
+define("HOST", "mariadb");
 // base de datos
 define("DB", "bd_test_deposito");
 //usuario
