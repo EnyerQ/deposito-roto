@@ -70,8 +70,9 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group">        
                                     <label for="selectEstadoAlmacen">Seleccionar estado de almacenamiento:</label>
+                    
                                     <select name="selectEstadoAlmacen" id="selectEstadoAlmacen" v-model="estado"
                                         class="form-control">
                                         <option value=""></option>
@@ -121,7 +122,10 @@
                                                 </v-card-title>
 
                                                 <v-data-table :headers="columnas" :items="registros" class="elevation-2"
-                                                    :search="search">
+                                                :search="search"
+                                                :loading="loading"
+                                                loading-text="Loading... Please wait">  
+                                                
 
                                                     <template v-slot:item="row">
                                                         <tr>
